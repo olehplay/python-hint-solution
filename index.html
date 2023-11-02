@@ -81,10 +81,9 @@
     </div>
     <!--Please update the hints with your own hints. Additionally, remember that <br> serves as a line break in HTML.  -->
     <div id="hint-block" class="block">
-      1. It is recommended to do ... <br /><br />
-      2. Some text <code>It is how code looks like</code> text again
-      <br /><br />
-      3. Use such method. <br /><br />
+      1. It is recommended to do ... <br />
+      2. Some text <code>It is how code looks like</code> text again<br />
+      3. Use such method.
     </div>
     <div id="solution-block" class="block">
       <!-- Modify the code within the <code> tags, ensuring that no additional spaces are added on the left side. -->
@@ -101,13 +100,14 @@ user_data()
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
     <script>
-      // Buttons manipulation
+      Prism.highlightAll();
+
       const hintBtn = document.getElementById("btn-hint");
       const solutionBtn = document.getElementById("btn-solution");
-      const hintBlock = document.getElementById("hint-block");
-      const solutionBlock = document.getElementById("solution-block");
 
-      hintBtn.addEventListener("click", () => {
+      let hintClick = () => {
+        let solutionBlock = document.getElementById("solution-block");
+        let hintBlock = document.getElementById("hint-block");
         const hintBlockDisplay = getComputedStyle(hintBlock).display;
         if (hintBlockDisplay === "none") {
           hintBlock.style.display = "block";
@@ -115,9 +115,11 @@ user_data()
           hintBlock.style.display = "none";
         }
         solutionBlock.style.display = "none";
-      });
+      };
 
-      solutionBtn.addEventListener("click", () => {
+      let solutionClick = () => {
+        let solutionBlock = document.getElementById("solution-block");
+        let hintBlock = document.getElementById("hint-block");
         const solutionBlockDisplay = getComputedStyle(solutionBlock).display;
         if (solutionBlockDisplay === "none") {
           solutionBlock.style.display = "block";
@@ -125,9 +127,10 @@ user_data()
           solutionBlock.style.display = "none";
         }
         hintBlock.style.display = "none";
-      });
+      };
 
-      Prism.highlightAll();
+      hintBtn.addEventListener("click", hintClick);
+      solutionBtn.addEventListener("click", solutionClick);
     </script>
   </body>
 </html>
