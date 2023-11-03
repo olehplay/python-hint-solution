@@ -1,93 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- Custom styles -->
-    <style>
-      .button-container {
-        display: flex;
-        gap: 10px;
-      }
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"
+/>
 
-      .button {
-        background-color: #ff8a00;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        font-weight: 600;
-        border-radius: 30px;
-        padding: 5px 12px;
-        font-family: inherit;
-        font-size: 18px;
-        cursor: pointer;
-        transition: 0.5s ease-in-out;
-      }
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css"
+/>
 
-      .button:hover,
-      .button:focus {
-        background-color: #d27204;
-      }
-      .block {
-        display: none;
-      }
+<style>
+  .button-container {
+    display: flex;
+    gap: 10px;
+  }
 
-      #hint-block {
-        padding: 10px;
-        background-color: white;
-        margin-top: 20px;
-        background-color: white;
-        line-height: 1.5;
-        color: black;
-        font-family: inherit;
-        border: #4f5e77 solid;
-        border-radius: 10px;
-        padding: 10px;
-      }
+  .button {
+    background-color: #ff8a00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 5px 12px;
+    font-family: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+  }
 
-      #solution-block {
-        margin-top: 20px;
-      }
+  .button:hover,
+  .button:focus {
+    background-color: #d27204;
+  }
+  .block {
+    display: none;
+  }
 
-      .language-css .token.string,
-      .style .token.string,
-      .token.entity,
-      .token.operator,
-      .token.url {
-        background: none !important;
-      }
-      code {
-        color: crimson;
-        background-color: #e2e2e2;
-        padding-left: 4px;
-        padding-right: 5px;
-        border-radius: 4px;
-        font-family: Monaco, Ubuntu Mono, sans-serif;
-        font-size: 16px;
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css"
-    />
-  </head>
-  <body>
-    <div class="button-container">
-      <button id="btn-hint" class="button">Hint</button>
-      <button id="btn-solution" class="button">Solution</button>
-    </div>
-    <!--Please update the hints with your own hints. Additionally, remember that <br> serves as a line break in HTML.  -->
-    <div id="hint-block" class="block">
-      1. It is recommended to do ... <br />
-      2. Some text <code>It is how code looks like</code> text again<br />
-      3. Use such method.
-    </div>
-    <div id="solution-block" class="block">
-      <!-- Modify the code within the <code> tags, ensuring that no additional spaces are added on the left side. -->
-      <pre><code class="language-python">
+  #hint-block {
+    padding: 10px;
+    background-color: white;
+    margin-top: 20px;
+    background-color: white;
+    line-height: 1.5;
+    color: black;
+    font-family: inherit;
+    border: #4f5e77 solid;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  #solution-block {
+    margin-top: 20px;
+  }
+
+  .language-css .token.string,
+  .style .token.string,
+  .token.entity,
+  .token.operator,
+  .token.url {
+    background: none !important;
+  }
+  code {
+    color: crimson;
+    background-color: #e2e2e2;
+    padding-left: 4px;
+    padding-right: 5px;
+    border-radius: 4px;
+    font-family: Monaco, Ubuntu Mono, sans-serif;
+    font-size: 16px;
+  }
+</style>
+
+<div class="button-container">
+  <button id="btn-hint" class="button" onclick="hintClick()">Hint</button>
+  <button id="btn-solution" class="button" onclick="solutionClick()">
+    Solution
+  </button>
+</div>
+<!--Please update the hints with your own hints. Additionally, remember that <br> serves as a line break in HTML.  -->
+<div id="hint-block" class="block">
+  1. It is recommended to do ... <br />
+  2. Some text <code>It is how code looks like</code> text again<br />
+  3. Use such method.
+</div>
+<div id="solution-block" class="block">
+  <!-- Modify the code within the <code> tags, ensuring that no additional spaces are added on the left side. -->
+  <pre><code class="language-python">
 def user_data(name="UnknownName", surname="UnknownSurname"):
     print("Name:", name)
     print("Surname:", surname)
@@ -96,41 +94,26 @@ user_data("John", "Smith")
 user_data("John")
 user_data()
       </code></pre>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
-    <script>
-      Prism.highlightAll();
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+<script>
+  let hintClick = () => {
+    Prism.highlightAll();
+    let solutionBlock = document.getElementById("solution-block");
+    let hintBlock = document.getElementById("hint-block");
+    let hintBlockDisplay = getComputedStyle(hintBlock).display;
+    hintBlock.style.display = hintBlockDisplay === "none" ? "block" : "none";
+    solutionBlock.style.display = "none";
+  };
 
-      const hintBtn = document.getElementById("btn-hint");
-      const solutionBtn = document.getElementById("btn-solution");
-
-      let hintClick = () => {
-        let solutionBlock = document.getElementById("solution-block");
-        let hintBlock = document.getElementById("hint-block");
-        const hintBlockDisplay = getComputedStyle(hintBlock).display;
-        if (hintBlockDisplay === "none") {
-          hintBlock.style.display = "block";
-        } else {
-          hintBlock.style.display = "none";
-        }
-        solutionBlock.style.display = "none";
-      };
-
-      let solutionClick = () => {
-        let solutionBlock = document.getElementById("solution-block");
-        let hintBlock = document.getElementById("hint-block");
-        const solutionBlockDisplay = getComputedStyle(solutionBlock).display;
-        if (solutionBlockDisplay === "none") {
-          solutionBlock.style.display = "block";
-        } else {
-          solutionBlock.style.display = "none";
-        }
-        hintBlock.style.display = "none";
-      };
-
-      hintBtn.addEventListener("click", hintClick);
-      solutionBtn.addEventListener("click", solutionClick);
-    </script>
-  </body>
-</html>
+  let solutionClick = () => {
+    Prism.highlightAll();
+    let solutionBlock = document.getElementById("solution-block");
+    let hintBlock = document.getElementById("hint-block");
+    let solutionBlockDisplay = getComputedStyle(solutionBlock).display;
+    solutionBlock.style.display =
+      solutionBlockDisplay === "none" ? "block" : "none";
+    hintBlock.style.display = "none";
+  };
+</script>
